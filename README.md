@@ -74,7 +74,7 @@ const vp = {
 };
 
 const documentLoader = {/*...*/}; // Set up your documentLoader
-const qrCodeImageDataUrl = await vpqr.toQrCode({vp, documentLoader});
+const {imageDataUrl} = await vpqr.toQrCode({vp, documentLoader});
 // data:image/gif;base64,R0lGODdhqgCqAIAAAAAAAP///ywAAAAAqgCqAAAC/4yPqcvt...
 ```
 
@@ -96,7 +96,7 @@ in the format:
 // Alphanumeric text from a QR Code Reader lib
 const qrCodeText = 'VP1-B3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...';
 
-const vp = await vqpr.fromQrCode({text: qrCodeText});
+const {vp} = await vqpr.fromQrCode({text: qrCodeText});
 // { "@context": "https://www.w3.org/2018/credentials/v1", ... }
 // becomes a JSON object with the VP in the example above.
 ```
