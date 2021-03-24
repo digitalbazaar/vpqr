@@ -23,7 +23,17 @@
   "main": "lib/index.js",
   "module": "lib/main.js",
   "dependencies": {
-    "esm": "^3.2.25"
+    "@digitalbazaar/cbor": "^1.0.1",
+    "@digitalbazaar/cborld": "^3.0.0",
+    "@digitalbazaar/did-method-key": "digitalbazaar/did-method-key-js#v1.x",
+    "@digitalbazaar/ed25519-signature-2020": "^1.0.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "^2.0.0",
+    "@nuintun/qrcode": "^3.0.1",
+    "@transmute/jsonld-document-loader": "^0.2.0",
+    "cit-context": "^2.0.0",
+    "esm": "^3.2.25",
+    "jsonld-signatures": "^8.0.2",
+    "vc-js": "digitalbazaar/vc-js#v7.x"
   },
   "devDependencies": {
     "@babel/core": "^7.13.8",
