@@ -1,10 +1,10 @@
-# Example Isomorphic JS Lib Template _(@digitalbazaar/isomorphic-js-lib-template)_
+# Verifiable Presentations to QR Code JS Lib _(@digitalbazaar/vpqr)_
 
-[![Node.js CI](https://github.com/digitalbazaar/isomorphic-js-lib-template/workflows/Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/isomorphic-js-lib-template/actions?query=workflow%3A%22Node.js+CI%22)
-[![Coverage status](https://img.shields.io/codecov/c/github/digitalbazaar/isomorphic-js-lib-template)](https://codecov.io/gh/digitalbazaar/isomorphic-js-lib-template)
-[![NPM Version](https://img.shields.io/npm/v/digitalbazaar/isomorphic-js-lib-template)](https://www.npmjs.com/package/@digitalbazaar/isomorphic-js-lib-template)
+[![Node.js CI](https://github.com/digitalbazaar/vpqr/workflows/Node.js%20CI/badge.svg)](https://github.com/digitalbazaar/vpqr/actions?query=workflow%3A%22Node.js+CI%22)
+[![Coverage status](https://img.shields.io/codecov/c/github/digitalbazaar/vpqr)](https://codecov.io/gh/digitalbazaar/vpqr)
+[![NPM Version](https://img.shields.io/npm/v/digitalbazaar/vpqr)](https://www.npmjs.com/package/@digitalbazaar/vpqr)
 
-> A template skeleton repo for (non-Bedrock) JS libraries that run in Node.js and in the browser.
+> An isomorphic JS (for Node.js and browser) library that takes a Verifiable Presentation, compresses it via CBOR-LD, and turns it into a QR Code.
 
 ## Table of Contents
 
@@ -31,8 +31,8 @@ TBD
 To install locally (for development):
 
 ```
-git clone https://github.com/digitalbazaar/isomorphic-js-lib-template.git
-cd isomorphic-js-lib-template
+git clone https://github.com/digitalbazaar/vpqr.git
+cd vpqr
 npm install
 ```
 

@@ -1,8 +1,8 @@
 {
-  "name": "@digitalbazaar/isomorphic-js-lib-template",
+  "name": "@digitalbazaar/vpqr",
   "version": "0.0.1",
-  "description": "",
-  "homepage": "https://github.com/digitalbazaar/isomorphic-js-lib-template",
+  "description": "An isomorphic JS (for Node.js and browser) library that takes a Verifiable Presentation, compresses it via CBOR-LD, and turns it into a QR Code.",
+  "homepage": "https://github.com/digitalbazaar/vpqr",
   "author": {
     "name": "Digital Bazaar, Inc.",
     "email": "support@digitalbazaar.com",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalbazaar/isomorphic-js-lib-template"
+    "url": "https://github.com/digitalbazaar/vpqr"
   },
   "bugs": {
-    "url": "https://github.com/digitalbazaar/isomorphic-js-lib-template/issues",
+    "url": "https://github.com/digitalbazaar/vpqr/issues",
     "email": "support@digitalbazaar.com"
   },
   "license": "BSD-3-Clause",
@@ -58,11 +58,6 @@
       "html",
       "text-summary"
     ]
-  },
-  "browser": {
-    "buffer": false,
-    "crypto": false,
-    "util": false
   },
   "engines": {
     "node": ">=12"
