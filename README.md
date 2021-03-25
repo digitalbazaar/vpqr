@@ -88,7 +88,7 @@ VP1-B3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...
 in the format:
 
 ```
-<format and version, 'VP1-'><multibase prefix, 'B'><base32 uppercase encoded CBORLD>
+<format and version, 'VP1-'><multibase prefix, 'B'><base32 RFCRFC4648 (no padding) encoded CBORLD>
 ```
 
 ### Decoding QR Code Text to Verifiable Presentation
