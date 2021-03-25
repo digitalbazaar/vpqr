@@ -15,8 +15,6 @@ import vcjs from 'vc-js';
 
 const didKeyDriver = didKey.driver();
 
-// import {BASE_32_ALPHABET} from '../lib/vpqr.js';
-
 import {toQrCode, fromQrCode} from '..';
 
 import {
@@ -43,16 +41,6 @@ const documentLoader = dl.documentLoaderFactory.pluginFactory
   .buildDocumentLoader();
 
 describe('vpqr', () => {
-  // describe('baseN', () => {
-  //   it('should encode/decode', async () => {
-  //     const bytes = new Uint8Array([0x74, 0x65, 0x73, 0x74]);
-  //     console.log('baseN:', baseN.encode(bytes, BASE_32_ALPHABET));
-  //     console.log('base32encode:', base32Encode(bytes.buffer, 'RFC4648',
-  //       {padding: false}));
-  //     console.log('hiBase32:', hiBase32.encode(bytes));
-  //   });
-  // });
-
   describe('toQrCode', () => {
     it('convert VP to an image data url', async () => {
       const {
@@ -70,7 +58,6 @@ describe('vpqr', () => {
         text: exampleQrCodeData, documentLoader, diagnose: null
       });
 
-      // console.log(vp);
       expect(vp).to.eql(exampleVp);
 
       // Verify signature
