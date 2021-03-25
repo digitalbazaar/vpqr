@@ -5,17 +5,23 @@ import chai from 'chai';
 chai.should();
 const {expect} = chai;
 
-const didKeyDriver = require('@digitalbazaar/did-method-key').driver();
-const dl = require('@transmute/jsonld-document-loader');
+import * as didKey from '@digitalbazaar/did-method-key';
+import * as dl from '@transmute/jsonld-document-loader';
 import citContext from 'cit-context';
 import didContext from 'did-context';
 import ed25519 from 'ed25519-signature-2020-context';
 
-import {toQrCode} from '..';
+const didKeyDriver = didKey.driver();
 
-import {mockVp, expectedImageDataUrl, encodedCborldBytes} from './mock-data.js';
+// import {BASE_32_ALPHABET} from '../lib/vpqr.js';
 
-const DEFAULT_DOCUMENT_LOADER = dl.documentLoaderFactory.pluginFactory
+import {toQrCode, fromQrCode} from '..';
+
+import {
+  exampleVp, exampleImageDataUrl, exampleQrCodeData
+} from './mock-data.js';
+
+const documentLoader = dl.documentLoaderFactory.pluginFactory
   .build({
     contexts: {
       ...dl.contexts.W3C_Verifiable_Credentials,
@@ -35,14 +41,35 @@ const DEFAULT_DOCUMENT_LOADER = dl.documentLoaderFactory.pluginFactory
   .buildDocumentLoader();
 
 describe('vpqr', () => {
+  // describe('baseN', () => {
+  //   it('should encode/decode', async () => {
+  //     const bytes = new Uint8Array([0x74, 0x65, 0x73, 0x74]);
+  //     console.log('baseN:', baseN.encode(bytes, BASE_32_ALPHABET));
+  //     console.log('base32encode:', base32Encode(bytes.buffer, 'RFC4648',
+  //       {padding: false}));
+  //     console.log('hiBase32:', hiBase32.encode(bytes));
+  //   });
+  // });
+
   describe('toQrCode', () => {
     it('convert VP to an image data url', async () => {
-      const {payload, imageDataUrl} = await toQrCode({
-        vp: mockVp, documentLoader: DEFAULT_DOCUMENT_LOADER, diagnose: null
+      const {
+        payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await toQrCode({vp: exampleVp, documentLoader});
+
+      expect(payload).to.equal(exampleQrCodeData);
+      expect(imageDataUrl).to.equal(exampleImageDataUrl);
+    });
+  });
+
+  describe('fromQrCode', () => {
+    it('convert from qr code payload to vp', async () => {
+      const {vp} = await fromQrCode({
+        text: exampleQrCodeData, documentLoader, diagnose: null
       });
 
-      expect(payload).to.equal(encodedCborldBytes);
-      expect(imageDataUrl).to.equal(expectedImageDataUrl);
+      // console.log(vp);
+      expect(vp).to.eql(exampleVp);
     });
   });
 });
