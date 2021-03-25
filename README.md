@@ -96,7 +96,9 @@ in the format:
 // Alphanumeric text from a QR Code Reader lib
 const qrCodeText = 'VP1-B3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...';
 
-const {vp} = await vqpr.fromQrCode({text: qrCodeText});
+const documentLoader = {/*...*/}; // Set up your documentLoader
+
+const {vp} = await vqpr.fromQrCode({text: qrCodeText, documentLoader});
 // { "@context": "https://www.w3.org/2018/credentials/v1", ... }
 // becomes a JSON object with the VP in the example above.
 ```

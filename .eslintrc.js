@@ -7,5 +7,8 @@ module.exports = {
   env: {
     node: true
   },
-  ignorePatterns: ['dist/']
+  ignorePatterns: ['dist/'],
+  rules: {
+    'jsdoc/require-description-complete-sentence': 'off'
+  }
 };
