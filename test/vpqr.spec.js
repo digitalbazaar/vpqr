@@ -10,6 +10,8 @@ import * as dl from '@transmute/jsonld-document-loader';
 import citContext from 'cit-context';
 import didContext from 'did-context';
 import ed25519 from 'ed25519-signature-2020-context';
+import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
+import vcjs from 'vc-js';
 
 const didKeyDriver = didKey.driver();
 
@@ -70,6 +72,16 @@ describe('vpqr', () => {
 
       // console.log(vp);
       expect(vp).to.eql(exampleVp);
+
+      // Verify signature
+      const suite = new Ed25519Signature2020();
+      const result = await vcjs.verify({
+        presentation: vp,
+        documentLoader,
+        suite,
+        unsignedPresentation: true
+      });
+      expect(result.verified).to.be.true;
     });
   });
 });
