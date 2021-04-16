@@ -23,7 +23,7 @@
   "main": "lib/index.js",
   "module": "lib/main.js",
   "dependencies": {
-    "@digitalbazaar/cborld": "digitalbazaar/cborld#v4.0-rc2",
+    "@digitalbazaar/cborld": "^4.0.0",
     "@nuintun/qrcode": "^3.0.1",
     "base32-decode": "^1.0.0",
     "base32-encode": "^1.2.0",
