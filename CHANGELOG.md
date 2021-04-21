@@ -1,6 +1,6 @@
 # vpqr Changelog
 
-## 2.1.0 - TBD
+## 2.1.0 - 2021-04-21
 
 ### Added
 - toQrCode returns QR Code version.
