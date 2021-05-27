@@ -10,6 +10,32 @@ const {contexts: credentialsContext, constants: {CREDENTIALS_CONTEXT_V1_URL}} =
 
 import {JsonLdDocumentLoader} from 'jsonld-document-loader';
 
+const ageCtx = {
+  '@context': {
+    '@protected': 'true',
+    id: '@id',
+    type: '@type',
+    overAge: {
+      '@id': 'https://w3id.org/age#overAge',
+      '@type': 'http://www.w3.org/2001/XMLSchema#positiveInteger'
+    },
+    OverAgeTokenCredential: {
+      '@id': 'https://w3id.org/age#OverAgeTokenCredential',
+      '@context': {
+        '@protected': true,
+        meta: {
+          '@id': 'https://w3id.org/cit#meta',
+          '@type': 'https://w3id.org/security#multibase'
+        },
+        payload: {
+          '@id': 'https://w3id.org/cit#payload',
+          '@type': 'https://w3id.org/security#multibase'
+        }
+      }
+    }
+  }
+};
+
 const staticLoader = new JsonLdDocumentLoader();
 staticLoader.addStatic(ed25519.constants.CONTEXT_URL,
   ed25519.contexts.get(ed25519.constants.CONTEXT_URL));
@@ -19,6 +45,9 @@ staticLoader.addStatic(x25519.constants.CONTEXT_URL,
 
 staticLoader.addStatic(citContext.constants.CONTEXT_URL,
   citContext.contexts.get(citContext.constants.CONTEXT_URL));
+
+staticLoader.addStatic('https://w3id.org/age/v1',
+  ageCtx);
 
 staticLoader.addStatic(didContext.constants.DID_CONTEXT_URL,
   didContext.contexts.get(didContext.constants.DID_CONTEXT_URL));
