@@ -4,37 +4,11 @@ import didContext from 'did-context';
 import ed25519 from 'ed25519-signature-2020-context';
 import x25519 from 'x25519-key-agreement-2020-context';
 import cred from 'credentials-context';
+import ageContext from '@convenience-org/age-verification-context';
+import {JsonLdDocumentLoader} from 'jsonld-document-loader';
 
 const {contexts: credentialsContext, constants: {CREDENTIALS_CONTEXT_V1_URL}} =
   cred;
-
-import {JsonLdDocumentLoader} from 'jsonld-document-loader';
-
-const ageCtx = {
-  '@context': {
-    '@protected': 'true',
-    id: '@id',
-    type: '@type',
-    overAge: {
-      '@id': 'https://w3id.org/age#overAge',
-      '@type': 'http://www.w3.org/2001/XMLSchema#positiveInteger'
-    },
-    OverAgeTokenCredential: {
-      '@id': 'https://w3id.org/age#OverAgeTokenCredential',
-      '@context': {
-        '@protected': true,
-        meta: {
-          '@id': 'https://w3id.org/cit#meta',
-          '@type': 'https://w3id.org/security#multibase'
-        },
-        payload: {
-          '@id': 'https://w3id.org/cit#payload',
-          '@type': 'https://w3id.org/security#multibase'
-        }
-      }
-    }
-  }
-};
 
 const staticLoader = new JsonLdDocumentLoader();
 staticLoader.addStatic(ed25519.constants.CONTEXT_URL,
@@ -46,8 +20,7 @@ staticLoader.addStatic(x25519.constants.CONTEXT_URL,
 staticLoader.addStatic(citContext.constants.CONTEXT_URL,
   citContext.contexts.get(citContext.constants.CONTEXT_URL));
 
-staticLoader.addStatic('https://w3id.org/age/v1',
-  ageCtx);
+staticLoader.addStatic(ageContext.CONTEXT_URL_V1, ageContext.CONTEXT_V1);
 
 staticLoader.addStatic(didContext.constants.DID_CONTEXT_URL,
   didContext.contexts.get(didContext.constants.DID_CONTEXT_URL));

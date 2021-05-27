@@ -23,11 +23,11 @@
   "main": "lib/index.js",
   "module": "lib/main.js",
   "dependencies": {
+    "@convenience-org/age-verification-context": "convenience-org/age-verification-context#update",
     "@digitalbazaar/cborld": "^4.2.0",
     "@nuintun/qrcode": "^3.0.1",
     "base32-decode": "^1.0.0",
     "base32-encode": "^1.2.0",
-    "cit-context": "^2.0.0",
     "esm": "^3.2.25"
   },
   "devDependencies": {
