@@ -1,5 +1,11 @@
 # vpqr Changelog
 
+## 2.1.1 -
+
+### Changed
+- Update `vc-js` dependency to published `v1.0` package.
+- Update unit test mock data and document loader.
+
 ## 2.1.0 - 2021-04-21
 
 ### Added
