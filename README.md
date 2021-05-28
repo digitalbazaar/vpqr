@@ -38,11 +38,6 @@ npm install
 
 ## Usage
 
-### Setting up your `documentLoader`
-
-Like all Linked Data Security related operations (such as signing a Verifiable
-Credential), using this library requires a `documentLoader` instance 
-
 ### Encoding Verifiable Presentations as QR Code Images
 
 ```js
