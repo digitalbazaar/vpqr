@@ -1,9 +1,10 @@
 # vpqr Changelog
 
-## 2.1.1 -
+## 2.2.0 -
 
 ### Changed
-- Update `vc-js` dependency to published `v1.0` package.
+- Update `@digitalbazaar/vc` test dependency to published `v1.0` package.
+- Update all test deps involving contexts and crypto suites to newest major versions.
 - Update unit test mock data and document loader.
 
 ## 2.1.0 - 2021-04-21
