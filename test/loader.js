@@ -1,11 +1,16 @@
 import * as didKey from '@digitalbazaar/did-method-key';
+import {CachedResolver} from '@digitalbazaar/did-io';
 import citContext from 'cit-context';
 import didContext from 'did-context';
 import ed25519 from 'ed25519-signature-2020-context';
 import x25519 from 'x25519-key-agreement-2020-context';
 import cred from 'credentials-context';
-import ageContext from '@convenience-org/age-verification-context';
+import ageContext from 'age-verification-context';
 import {JsonLdDocumentLoader} from 'jsonld-document-loader';
+
+const didKeyDriver = didKey.driver();
+const resolver = new CachedResolver();
+resolver.use(didKeyDriver);
 
 const {contexts: credentialsContext, constants: {CREDENTIALS_CONTEXT_V1_URL}} =
   cred;
@@ -28,19 +33,7 @@ staticLoader.addStatic(didContext.constants.DID_CONTEXT_URL,
 staticLoader.addStatic(CREDENTIALS_CONTEXT_V1_URL,
   credentialsContext.get(CREDENTIALS_CONTEXT_V1_URL));
 
-const didKeyDriver = didKey.driver();
+staticLoader.setDidResolver(resolver);
 
-export const documentLoader = async url => {
-  if(url && url.startsWith('did:key')) {
-    const document = await didKeyDriver.get({url});
-    return {
-      contextUrl: null,
-      document,
-      documentUrl: url,
-      tag: 'static'
-    };
-  }
-
-  return staticLoader.documentLoader(url);
-};
+export const documentLoader = staticLoader.documentLoader.bind(staticLoader);
 
