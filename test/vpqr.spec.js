@@ -20,8 +20,8 @@ describe('vpqr', () => {
   describe('toQrCode', () => {
     it('convert VP to an image data url', async () => {
       const {
-        version, payload, imageDataUrl/*, encodedCborld, rawCborldBytes*/
-      } = await toQrCode({vp: exampleVp, documentLoader});
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await toQrCode({vp: exampleVp, documentLoader, diagnose: null});
       expect(payload).to.equal(exampleQrCodeData);
       expect(imageDataUrl).to.equal(exampleImageDataUrl);
       expect(version).to.be.a('number');
