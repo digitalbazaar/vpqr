@@ -27,8 +27,9 @@ export const exampleVp = {
     proof: {
       type: 'Ed25519Signature2020',
       created: '2021-08-07T21:36:26Z',
-      verificationMethod: 'did:key:z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXK' +
-        'WuTEuGA3jQF#z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF',
+      // eslint-disable-next-line max-len
+      verificationMethod: 'did:key:z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF' +
+        '#z6MkkUbCFazdoducKf8SUye7cAxuicMdDBhXKWuTEuGA3jQF',
       proofPurpose: 'assertionMethod',
       proofValue: 'z4mAs9uHU16jR4xwPcbhHyRUc6BbaiJQE5MJwn3PCWkRXsriK9' +
         'AMrQQMbjzG9XXFPNgngmQXHKUz23WRSu9jSxPCF'
