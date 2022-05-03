@@ -6,9 +6,9 @@ chai.should();
 const {expect} = chai;
 
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
-import vcjs from '@digitalbazaar/vc';
+import * as vcjs from '@digitalbazaar/vc';
 
-import {toQrCode, fromQrCode} from '..';
+import {toQrCode, fromQrCode} from '../lib/index.js';
 
 import {
   exampleVp, exampleImageDataUrl, exampleQrCodeData
