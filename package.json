@@ -25,7 +25,7 @@
     "util": false
   },
   "files": [
-    "lib/*.js"
+    "lib/**/*.js"
   ],
   "dependencies": {
     "@digitalbazaar/cborld": "^5.0.0",
