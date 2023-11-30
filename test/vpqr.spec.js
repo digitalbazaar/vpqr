@@ -5,15 +5,15 @@ import chai from 'chai';
 chai.should();
 const {expect} = chai;
 
-import * as vcjs from '@digitalbazaar/vc';
 import * as cborld from '@digitalbazaar/cborld';
+import * as vcjs from '@digitalbazaar/vc';
 import {Ed25519Signature2020} from '@digitalbazaar/ed25519-signature-2020';
 
-import {toQrCode, fromQrCode} from '../lib/index.js';
+import {fromQrCode, toQrCode} from '../lib/index.js';
 import {util} from '../lib/index.js';
 
 import {
-  exampleVp, exampleImageDataUrl, exampleQrCodeData
+  exampleImageDataUrl, exampleQrCodeData, exampleVp
 } from './mock-data.js';
 
 import {documentLoader} from './loader.js';
