@@ -1,5 +1,19 @@
 # vpqr Changelog
 
+## 4.0.0 - 2023-11-dd
+
+### Added
+- Add utility API for generating QR codes with any prefix and any
+  CBOR-LD compatible payload.
+
+### Changed
+- **BREAKING**: Use `cborld@6` which includes cryptosuite string and
+  base64url multibase compression codecs. Any input data using these will
+  change with this version (they will be compresed), otherwise no other
+  changes should occur in payloads. Decoding should continue to work
+  fine on uncompressed payloads.
+- **BREAKING**: Require node 18+ (current non-EOL node versions).
+
 ## 3.0.0 - 2022-06-15
 
 ### Changed
