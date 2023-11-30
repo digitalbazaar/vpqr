@@ -23,7 +23,7 @@
     "lib/**/*.js"
   ],
   "dependencies": {
-    "@digitalbazaar/cborld": "^5.0.0",
+    "@digitalbazaar/cborld": "^6.0.1",
     "@nuintun/qrcode": "^3.3.0",
     "base32-decode": "^1.0.0",
     "base32-encode": "^2.0.0"
@@ -32,7 +32,7 @@
     "@digitalbazaar/did-io": "^2.0.0",
     "@digitalbazaar/did-method-key": "^3.0.0",
     "@digitalbazaar/ed25519-signature-2020": "^4.0.1",
-    "@digitalbazaar/vc": "^3.0.0",
+    "@digitalbazaar/vc": "^6.2.0",
     "age-verification-context": "^5.0.0",
     "c8": "^7.11.3",
     "chai": "^4.3.6",
