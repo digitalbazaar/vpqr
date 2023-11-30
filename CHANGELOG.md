@@ -1,6 +1,6 @@
 # vpqr Changelog
 
-## 4.0.0 - 2023-11-dd
+## 4.0.0 - 2023-11-29
 
 ### Added
 - Add utility API for generating QR codes with any prefix and any
