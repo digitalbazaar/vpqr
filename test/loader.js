@@ -1,12 +1,15 @@
+/*!
+ * Copyright (c) 2021-2023 Digital Bazaar, Inc. All rights reserved.
+ */
 import * as didKey from '@digitalbazaar/did-method-key';
+import ageContext from 'age-verification-context';
 import {CachedResolver} from '@digitalbazaar/did-io';
 import citContext from 'cit-context';
+import cred from 'credentials-context';
 import didContext from 'did-context';
 import ed25519 from 'ed25519-signature-2020-context';
-import x25519 from 'x25519-key-agreement-2020-context';
-import cred from 'credentials-context';
-import ageContext from 'age-verification-context';
 import {JsonLdDocumentLoader} from 'jsonld-document-loader';
+import x25519 from 'x25519-key-agreement-2020-context';
 
 const didKeyDriver = didKey.driver();
 const resolver = new CachedResolver();
