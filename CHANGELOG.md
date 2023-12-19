@@ -1,5 +1,10 @@
 # vpqr Changelog
 
+## 4.1.0 - 2023-xx-xx
+
+### Added
+- Add passthrough of `cborld` `appContextMap` option.
+
 ## 4.0.0 - 2023-11-29
 
 ### Added
