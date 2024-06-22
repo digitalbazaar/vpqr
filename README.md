@@ -111,6 +111,14 @@ const {vp} = await vqpr.fromQrCode({text: qrCodeText, documentLoader});
 // becomes a JSON object with the VP in the example above.
 ```
 
+### Encoding Options
+
+- `qrMultibaseEncoding`: Encoding for QR data. `B` for [RFC4648][] base32, `R`
+  for [RFC9285][] base45. base45 is more efficient. Defaults to base32.
+- `qrErrorCorrectionLevel`: Error correction level used in the QR code. 'L' Low
+  7%, 'M' Medium 15%, 'Q' Qartile 25%, 'H' High 30%. Defaults to 'L'.
+- `qrVersion`: QR version. 1-40 or 0 for auto. Defaults to auto.
+
 ## Contribute
 
 See [the contribute file](https://github.com/digitalbazaar/bedrock/blob/master/CONTRIBUTING.md)!
@@ -128,3 +136,6 @@ Digital Bazaar: support@digitalbazaar.com
 ## License
 
 [New BSD License (3-clause)](LICENSE) © Digital Bazaar
+
+[RFC4648]: https://datatracker.ietf.org/doc/rfc4648/
+[RFC9285]: https://datatracker.ietf.org/doc/rfc9285/

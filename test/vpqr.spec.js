@@ -13,19 +13,36 @@ import {fromQrCode, toQrCode} from '../lib/index.js';
 import {util} from '../lib/index.js';
 
 import {
-  exampleImageDataUrl, exampleQrCodeData, exampleVp
+  exampleImageDataUrlB,
+  exampleImageDataUrlR,
+  exampleQrCodeDataB,
+  exampleQrCodeDataR,
+  exampleVp
 } from './mock-data.js';
 
 import {documentLoader} from './loader.js';
 
 describe('vpqr', () => {
   describe('toQrCode', () => {
-    it('convert VP to an image data url', async () => {
+    it('convert VP to an image data url (b32)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
-      } = await toQrCode({vp: exampleVp, documentLoader, diagnose: null});
-      expect(payload).to.equal(exampleQrCodeData);
-      expect(imageDataUrl).to.equal(exampleImageDataUrl);
+      } = await toQrCode({
+        vp: exampleVp, documentLoader, qrMultibaseEncoding: 'B', diagnose: null
+      });
+      expect(payload).to.equal(exampleQrCodeDataB);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlB);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(13);
+    });
+    it('convert VP to an image data url (b45)', async () => {
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await toQrCode({
+        vp: exampleVp, documentLoader, qrMultibaseEncoding: 'R', diagnose: null
+      });
+      expect(payload).to.equal(exampleQrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlR);
       expect(version).to.be.a('number');
       expect(version).to.equal(13);
     });
@@ -34,7 +51,7 @@ describe('vpqr', () => {
   describe('fromQrCode', () => {
     it('convert from qr code payload to vp', async () => {
       const {vp} = await fromQrCode({
-        text: exampleQrCodeData, documentLoader, diagnose: null
+        text: exampleQrCodeDataB, documentLoader, diagnose: null
       });
 
       expect(vp).to.eql(exampleVp);
@@ -55,20 +72,35 @@ describe('vpqr', () => {
 
 describe('util', () => {
   describe('toQrCode', () => {
-    it('convert any JSON-LD document to an image data url', async () => {
+    it('convert any JSON-LD document to an image data url (b23)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
         header: 'VP1-',
-        jsonldDocument: exampleVp, documentLoader, diagnose: null
+        jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'B',
+        diagnose: null
       });
-      expect(payload).to.equal(exampleQrCodeData);
-      expect(imageDataUrl).to.equal(exampleImageDataUrl);
+      expect(payload).to.equal(exampleQrCodeDataB);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlB);
       expect(version).to.be.a('number');
       expect(version).to.equal(13);
     });
 
-    it('convert any CBOR-LD bytes to an image data url', async () => {
+    it('convert any JSON-LD document to an image data url (b45)', async () => {
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await util.toQrCode({
+        header: 'VP1-',
+        jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'R',
+        diagnose: null
+      });
+      expect(payload).to.equal(exampleQrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlR);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(13);
+    });
+
+    it('convert any CBOR-LD bytes to an image data url (b32)', async () => {
       const cborldBytes = await cborld.encode({
         jsonldDocument: exampleVp,
         documentLoader
@@ -76,9 +108,28 @@ describe('util', () => {
 
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
-      } = await util.toQrCode({header: 'VP1-', cborldBytes});
-      expect(payload).to.equal(exampleQrCodeData);
-      expect(imageDataUrl).to.equal(exampleImageDataUrl);
+      } = await util.toQrCode({
+        header: 'VP1-', cborldBytes, qrMultibaseEncoding: 'B'
+      });
+      expect(payload).to.equal(exampleQrCodeDataB);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlB);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(13);
+    });
+
+    it('convert any CBOR-LD bytes to an image data url (b45)', async () => {
+      const cborldBytes = await cborld.encode({
+        jsonldDocument: exampleVp,
+        documentLoader
+      });
+
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await util.toQrCode({
+        header: 'VP1-', cborldBytes, qrMultibaseEncoding: 'R'
+      });
+      expect(payload).to.equal(exampleQrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleImageDataUrlR);
       expect(version).to.be.a('number');
       expect(version).to.equal(13);
     });
@@ -88,7 +139,7 @@ describe('util', () => {
     it('convert from qr code payload to JSON-LD document', async () => {
       const {jsonldDocument} = await util.fromQrCode({
         expectedHeader: 'VP1-',
-        text: exampleQrCodeData, documentLoader, diagnose: null
+        text: exampleQrCodeDataB, documentLoader, diagnose: null
       });
 
       expect(jsonldDocument).to.eql(exampleVp);
@@ -109,7 +160,7 @@ describe('util', () => {
       const {cborldBytes} = await util.fromQrCode({
         expectedHeader: 'VP1-',
         decodeCborld: false,
-        text: exampleQrCodeData, documentLoader, diagnose: null
+        text: exampleQrCodeDataB, documentLoader, diagnose: null
       });
 
       const jsonldDocument = await cborld.decode({
