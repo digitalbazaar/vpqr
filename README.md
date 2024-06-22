@@ -88,20 +88,20 @@ const {imageDataUrl} = await vpqr.toQrCode({vp, documentLoader});
 When these QR Codes are scanned, they are read as Alphanumeric mode text,
 
 ```
-VP1-B3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...
+VP1-R3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...
 ```
 
 in the format:
 
 ```
-<format and version, 'VP1-'><multibase prefix, 'B'><base32 RFC4648 (no padding) encoded CBORLD>
+<format and version, 'VP1-'><multibase prefix, 'R'><base45 RFC9285 encoded CBOR-LD>
 ```
 
 ### Decoding QR Code Text to Verifiable Presentation
 
 ```js
 // Alphanumeric text from a QR Code Reader lib
-const qrCodeText = 'VP1-B3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...';
+const qrCodeText = 'VP1-R3ECQDIYBCEMDGEAYG2UADAYRCV4DA2DUORYHGOR...';
 
 // Set up your documentLoader
 const documentLoader = {/*...*/};
@@ -114,7 +114,7 @@ const {vp} = await vqpr.fromQrCode({text: qrCodeText, documentLoader});
 ### Encoding Options
 
 - `qrMultibaseEncoding`: Encoding for QR data. `B` for [RFC4648][] base32, `R`
-  for [RFC9285][] base45. base45 is more efficient. Defaults to base32.
+  for [RFC9285][] base45. base45 is more efficient. Defaults to base45.
 - `qrErrorCorrectionLevel`: Error correction level used in the QR code. 'L' Low
   7%, 'M' Medium 15%, 'Q' Qartile 25%, 'H' High 30%. Defaults to 'L'.
 - `qrVersion`: QR version. 1-40 or 0 for auto. Defaults to auto.

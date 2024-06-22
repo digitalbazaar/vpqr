@@ -1,5 +1,10 @@
 # vpqr Changelog
 
+## 5.0.0 - 2024-xx-xx
+
+### Changed
+- **BREAKING**: Use base45 encoding mode by default.
+
 ## 4.2.0 - 2024-08-26
 
 ### Added
