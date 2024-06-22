@@ -23,6 +23,7 @@
     "lib/**/*.js"
   ],
   "dependencies": {
+    "@digitalbazaar/base45": "^1.0.0",
     "@digitalbazaar/cborld": "^6.0.1",
     "@nuintun/qrcode": "^3.3.0",
     "base32-decode": "^1.0.0",

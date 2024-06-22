@@ -1,5 +1,17 @@
 # vpqr Changelog
 
+## 4.2.0 - 2024-xx-xx
+
+### Added
+- Add RFC9285 base45 support for more efficient encoding than base32.
+  - Defaulting to base32 until the next major release.
+- More `toQrCode` options available:
+  - `qrMultibaseEncoding`: Encoding for QR data. `B` for base32, `R` for
+    base45. base45 is more efficient. Defaults to base32.
+  - `qrErrorCorrectionLevel`: Error correction level used in the QR code. 'L'
+    Low 7%, 'M' Medium 15%, 'Q' Qartile 25%, 'H' High 30%. Defaults to 'L'.
+  - `qrVersion`: QR version. 1-40 or 0 for auto. Defaults to auto.
+
 ## 4.1.0 - 2023-12-19
 
 ### Added
