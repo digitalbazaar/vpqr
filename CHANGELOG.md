@@ -1,6 +1,6 @@
 # vpqr Changelog
 
-## 4.2.0 - 2024-xx-xx
+## 4.2.0 - 2024-08-26
 
 ### Added
 - Add RFC9285 base45 support for more efficient encoding than base32.
