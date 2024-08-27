@@ -72,7 +72,7 @@ describe('vpqr', () => {
 
 describe('util', () => {
   describe('toQrCode', () => {
-    it('convert any JSON-LD document to an image data url (b23)', async () => {
+    it('convert any JSON-LD document to an image data url (b32)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
