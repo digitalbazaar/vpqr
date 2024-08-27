@@ -2,8 +2,14 @@
 
 ## 5.0.0 - 2024-xx-xx
 
+### Added
+- Add `toQrCode()` `margin` option to control image margin. Useful when
+  displayed QR code quiet zone is handled by other means.
+
 ### Changed
 - **BREAKING**: Use base45 encoding mode by default.
+- **BREAKING**: Rename `toQrCode()` `size` option to `moduleSize` to avoid
+  confusion with image size.
 
 ## 4.2.0 - 2024-08-26
 
