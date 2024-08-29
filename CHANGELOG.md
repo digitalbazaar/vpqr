@@ -1,6 +1,6 @@
 # @digitalbazaar/vpqr Changelog
 
-## 5.0.0 - 2024-xx-xx
+## 5.0.0 - 2024-08-29
 
 ### Added
 - Add `toQrCode()` `margin` option to control image margin. Useful when
