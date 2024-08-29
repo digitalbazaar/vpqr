@@ -1,4 +1,4 @@
-# vpqr Changelog
+# @digitalbazaar/vpqr Changelog
 
 ## 5.0.0 - 2024-xx-xx
 
@@ -10,6 +10,10 @@
 - **BREAKING**: Use base45 encoding mode by default.
 - **BREAKING**: Rename `toQrCode()` `size` option to `moduleSize` to avoid
   confusion with image size.
+- **BREAKING**: Update to `@digitalbazaar/cborld@7`.
+  - Includes encoder changes that may effect output QR codes in backwards
+    incompatible ways depending on VC/VP data. See the cborld changelog for
+    details.
 
 ## 4.2.0 - 2024-08-26
 

@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@digitalbazaar/base45": "^1.0.0",
-    "@digitalbazaar/cborld": "^6.0.3",
+    "@digitalbazaar/cborld": "^7.1.2",
     "@nuintun/qrcode": "^3.4.0",
     "base32-decode": "^1.0.0",
     "base32-encode": "^2.0.0"
