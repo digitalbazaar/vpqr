@@ -63,7 +63,7 @@ describe('vpqr', () => {
         documentLoader,
         suite,
         unsignedPresentation: true,
-        now: Date.parse(vp?.verifiableCredential[0]?.issuanceDate)
+        now: Date.parse(vp?.verifiableCredential?.issuanceDate)
       });
       expect(result.verified).to.be.true;
     });
@@ -151,7 +151,7 @@ describe('util', () => {
         documentLoader,
         suite,
         unsignedPresentation: true,
-        now: Date.parse(jsonldDocument?.verifiableCredential[0]?.issuanceDate)
+        now: Date.parse(jsonldDocument?.verifiableCredential?.issuanceDate)
       });
       expect(result.verified).to.be.true;
     });
@@ -176,7 +176,7 @@ describe('util', () => {
         documentLoader,
         suite,
         unsignedPresentation: true,
-        now: Date.parse(jsonldDocument?.verifiableCredential[0]?.issuanceDate)
+        now: Date.parse(jsonldDocument?.verifiableCredential?.issuanceDate)
       });
       expect(result.verified).to.be.true;
     });
