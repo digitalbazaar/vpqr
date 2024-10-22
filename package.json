@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "@digitalbazaar/base45": "^1.0.0",
-    "@digitalbazaar/cborld": "^7.1.2",
+    "@digitalbazaar/cborld": "^7.2.0",
     "@nuintun/qrcode": "^3.4.0",
     "base32-decode": "^1.0.0",
     "base32-encode": "^2.0.0"
@@ -45,7 +45,7 @@
     "ed25519-signature-2020-context": "^1.1.0",
     "eslint": "^8.57.0",
     "eslint-config-digitalbazaar": "^5.2.0",
-    "eslint-plugin-jsdoc": "^50.4.1",
+    "eslint-plugin-jsdoc": "^50.4.3",
     "eslint-plugin-unicorn": "^56.0.0",
     "jsonld-document-loader": "^2.2.0",
     "karma": "^6.4.4",
