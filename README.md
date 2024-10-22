@@ -119,6 +119,53 @@ const {vp} = await vqpr.fromQrCode({text: qrCodeText, documentLoader});
   7%, 'M' Medium 15%, 'Q' Qartile 25%, 'H' High 30%. Defaults to 'L'.
 - `qrVersion`: QR version. 1-40 or 0 for auto. Defaults to auto.
 
+### Advanced Options
+
+More advanced use cases can use extra options and the lower level APIs in
+`util`:
+- Encode and decode Verifiable Credentials.
+- Use custome encoding headers like `VP1-` and `VC1-`.
+- Access other related outputs.
+- Use options to control the output module size (the pixel size of the small
+  squares) and image quiet zone margin size.
+- Control QR options such as error correction level.
+- Provide a diagnostics function.
+- Pass in legacy `cborld` `appContextMap` or modern `registryEntryId`,
+  `typeTable`, and `typeTableLoader` options.
+
+```js
+import {util} from '@digitalbazaar/vpqr';
+
+const {toQrCode} = util;
+
+// setup options as needed
+
+// encode QR code
+const {
+  version, payload, imageDataUrl, encodedCborld, rawCborldBytes
+} = await toQrCode({
+  header: 'VC1-',
+  jsondldDocument: verifiableCredential,
+  documentLoader,
+  registryEntryId: 2000,
+  typeTableLoader,
+  moduleSize: 4,
+  margin: 16,
+  qrErrorCorrectionLevel: 'H'
+});
+
+// decode QR code text
+const {
+  jsondldDocument
+} = await fromQrCode({
+  expectedHeader = 'VC1-',
+  text,
+  decodeCborld: true,
+  documentLoader,
+  typeTableLoader
+});
+```
+
 ## Contribute
 
 See [the contribute file](https://github.com/digitalbazaar/bedrock/blob/master/CONTRIBUTING.md)!
