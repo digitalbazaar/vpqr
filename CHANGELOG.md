@@ -3,8 +3,8 @@
 ## 5.1.0 - 2024-xx-xx
 
 ### Changed
-- Add support for `@digitalbazaar/cborld` `typeTable` and `registryEntryId`
-  options.
+- Add support for `@digitalbazaar/cborld` `registryEntryId`, `typeTable`, and
+  `typeTableLoader` options.
 
 ## 5.0.0 - 2024-08-29
 
