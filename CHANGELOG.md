@@ -1,6 +1,6 @@
 # @digitalbazaar/vpqr Changelog
 
-## 5.1.0 - 2024-xx-xx
+## 5.1.0 - 2024-10-21
 
 ### Changed
 - Add support for `@digitalbazaar/cborld` `registryEntryId`, `typeTable`, and
