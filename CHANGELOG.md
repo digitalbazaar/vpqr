@@ -1,6 +1,6 @@
 # @digitalbazaar/vpqr Changelog
 
-## 6.0.0 - 2025-04-dd
+## 6.0.0 - 2025-04-24
 
 ### Changed
 - **BREAKING**: The `format` parameter for encoding methods now defaults to
