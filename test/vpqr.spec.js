@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2021-2023 Digital Bazaar, Inc. All rights reserved.
+ * Copyright (c) 2021-2025 Digital Bazaar, Inc. All rights reserved.
  */
 import chai from 'chai';
 chai.should();
@@ -13,6 +13,8 @@ import {fromQrCode, toQrCode} from '../lib/index.js';
 import {util} from '../lib/index.js';
 
 import {
+  exampleCborld1ImageDataUrlR,
+  exampleCborld1QrCodeDataR,
   exampleImageDataUrlB,
   exampleImageDataUrlR,
   exampleQrCodeDataB,
@@ -24,7 +26,7 @@ import {documentLoader} from './loader.js';
 
 describe('vpqr', () => {
   describe('toQrCode', () => {
-    it('convert VP to an image data url (b32)', async () => {
+    it('legacy convert VP to image data url (b32)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await toQrCode({
@@ -35,7 +37,7 @@ describe('vpqr', () => {
       expect(version).to.be.a('number');
       expect(version).to.equal(13);
     });
-    it('convert VP to an image data url (b45)', async () => {
+    it('legacy convert VP to image data url (b45)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await toQrCode({
@@ -45,6 +47,18 @@ describe('vpqr', () => {
       expect(imageDataUrl).to.equal(exampleImageDataUrlR);
       expect(version).to.be.a('number');
       expect(version).to.equal(13);
+    });
+    it('convert VP to image data url (b45)', async () => {
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await toQrCode({
+        vp: exampleVp, format: 'cbor-ld-1.0', registryEntryId: 1,
+        documentLoader, qrMultibaseEncoding: 'R', diagnose: null
+      });
+      expect(payload).to.equal(exampleCborld1QrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleCborld1ImageDataUrlR);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(16);
     });
   });
 
@@ -72,7 +86,7 @@ describe('vpqr', () => {
 
 describe('util', () => {
   describe('toQrCode', () => {
-    it('convert any JSON-LD document to an image data url (b32)', async () => {
+    it('convert JSON-LD document to image data url (b32)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
@@ -86,7 +100,23 @@ describe('util', () => {
       expect(version).to.equal(13);
     });
 
-    it('convert any JSON-LD document to an image data url (b45)', async () => {
+    it('convert JSON-LD document to image data url (b45)', async () => {
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await util.toQrCode({
+        header: 'VP1-',
+        jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'R',
+        format: 'cbor-ld-1.0',
+        registryEntryId: 1,
+        diagnose: null
+      });
+      expect(payload).to.equal(exampleCborld1QrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleCborld1ImageDataUrlR);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(16);
+    });
+
+    it('legacy convert JSON-LD document to image data url (b45)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
@@ -100,9 +130,10 @@ describe('util', () => {
       expect(version).to.equal(13);
     });
 
-    it('convert any CBOR-LD bytes to an image data url (b32)', async () => {
+    it('convert CBOR-LD bytes to image data url (b32)', async () => {
       const cborldBytes = await cborld.encode({
         jsonldDocument: exampleVp,
+        format: 'legacy-singleton',
         documentLoader
       });
 
@@ -117,9 +148,28 @@ describe('util', () => {
       expect(version).to.equal(13);
     });
 
-    it('convert any CBOR-LD bytes to an image data url (b45)', async () => {
+    it('convert CBOR-LD bytes to image data url (b45)', async () => {
       const cborldBytes = await cborld.encode({
         jsonldDocument: exampleVp,
+        registryEntryId: 1,
+        documentLoader
+      });
+
+      const {
+        version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
+      } = await util.toQrCode({
+        header: 'VP1-', cborldBytes, qrMultibaseEncoding: 'R'
+      });
+      expect(payload).to.equal(exampleCborld1QrCodeDataR);
+      expect(imageDataUrl).to.equal(exampleCborld1ImageDataUrlR);
+      expect(version).to.be.a('number');
+      expect(version).to.equal(16);
+    });
+
+    it('legacy convert CBOR-LD bytes to image data url (b45)', async () => {
+      const cborldBytes = await cborld.encode({
+        jsonldDocument: exampleVp,
+        format: 'legacy-singleton',
         documentLoader
       });
 
