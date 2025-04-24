@@ -1,6 +1,6 @@
 {
   "name": "@digitalbazaar/vpqr",
-  "version": "5.1.1-0",
+  "version": "5.2.0",
   "description": "An isomorphic JS (for Node.js and browser) library that takes a Verifiable Presentation, compresses it via CBOR-LD, and turns it into a QR Code.",
   "homepage": "https://github.com/digitalbazaar/vpqr",
   "author": {
