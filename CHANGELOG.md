@@ -1,5 +1,12 @@
 # @digitalbazaar/vpqr Changelog
 
+## 6.0.0 - 2025-04-dd
+
+### Changed
+- **BREAKING**: The `format` parameter for encoding methods now defaults to
+  `cbor-ld-1.0` to cause CBOR-LD 1.0 tag `0xcb1d` (`51997`) to be used. To
+  use a pre-1.0 tag, set `format` to "legacy-range" or "legacy-singleton".
+
 ## 5.2.0 - 2025-04-24
 
 ### Added

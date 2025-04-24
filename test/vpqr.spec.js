@@ -30,7 +30,8 @@ describe('vpqr', () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await toQrCode({
-        vp: exampleVp, documentLoader, qrMultibaseEncoding: 'B', diagnose: null
+        vp: exampleVp, format: 'legacy-singleton',
+        documentLoader, qrMultibaseEncoding: 'B', diagnose: null
       });
       expect(payload).to.equal(exampleQrCodeDataB);
       expect(imageDataUrl).to.equal(exampleImageDataUrlB);
@@ -41,7 +42,8 @@ describe('vpqr', () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await toQrCode({
-        vp: exampleVp, documentLoader, qrMultibaseEncoding: 'R', diagnose: null
+        vp: exampleVp, format: 'legacy-singleton',
+        documentLoader, qrMultibaseEncoding: 'R', diagnose: null
       });
       expect(payload).to.equal(exampleQrCodeDataR);
       expect(imageDataUrl).to.equal(exampleImageDataUrlR);
@@ -52,7 +54,7 @@ describe('vpqr', () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await toQrCode({
-        vp: exampleVp, format: 'cbor-ld-1.0', registryEntryId: 1,
+        vp: exampleVp, registryEntryId: 1,
         documentLoader, qrMultibaseEncoding: 'R', diagnose: null
       });
       expect(payload).to.equal(exampleCborld1QrCodeDataR);
@@ -86,12 +88,13 @@ describe('vpqr', () => {
 
 describe('util', () => {
   describe('toQrCode', () => {
-    it('convert JSON-LD document to image data url (b32)', async () => {
+    it('legacy convert JSON-LD document to image data url (b32)', async () => {
       const {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
         header: 'VP1-',
-        jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'B',
+        jsonldDocument: exampleVp, format: 'legacy-singleton',
+        documentLoader, qrMultibaseEncoding: 'B',
         diagnose: null
       });
       expect(payload).to.equal(exampleQrCodeDataB);
@@ -106,7 +109,6 @@ describe('util', () => {
       } = await util.toQrCode({
         header: 'VP1-',
         jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'R',
-        format: 'cbor-ld-1.0',
         registryEntryId: 1,
         diagnose: null
       });
@@ -121,7 +123,8 @@ describe('util', () => {
         version, payload, imageDataUrl /*, encodedCborld, rawCborldBytes*/
       } = await util.toQrCode({
         header: 'VP1-',
-        jsonldDocument: exampleVp, documentLoader, qrMultibaseEncoding: 'R',
+        jsonldDocument: exampleVp, format: 'legacy-singleton',
+        documentLoader, qrMultibaseEncoding: 'R',
         diagnose: null
       });
       expect(payload).to.equal(exampleQrCodeDataR);
@@ -130,7 +133,7 @@ describe('util', () => {
       expect(version).to.equal(13);
     });
 
-    it('convert CBOR-LD bytes to image data url (b32)', async () => {
+    it('legacy convert CBOR-LD bytes to image data url (b32)', async () => {
       const cborldBytes = await cborld.encode({
         jsonldDocument: exampleVp,
         format: 'legacy-singleton',
