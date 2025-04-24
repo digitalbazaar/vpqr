@@ -1,5 +1,14 @@
 # @digitalbazaar/vpqr Changelog
 
+## 5.2.0 - 2025-mm-dd
+
+### Added
+- Add `format` parameter to encoding methods that can be passed a value of
+  `cbor-ld-1.0` to cause CBOR-LD 1.0 tag `0xcb1d` (`51997`) to be used.
+
+### Changed
+- Use `@digitalbazaar/cborld@8`.
+
 ## 5.1.0 - 2024-10-21
 
 ### Changed
