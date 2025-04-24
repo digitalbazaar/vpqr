@@ -1,6 +1,6 @@
 # @digitalbazaar/vpqr Changelog
 
-## 5.2.0 - 2025-mm-dd
+## 5.2.0 - 2025-04-24
 
 ### Added
 - Add `format` parameter to encoding methods that can be passed a value of
